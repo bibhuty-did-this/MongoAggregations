@@ -1,0 +1,14 @@
+db.Persons.aggregate([
+    {$project:{
+        _id:0,
+        name:1,
+        info:{
+            country:"$company.location.country",
+            age:"$age",
+            fruit:"$favoriteFruit",
+            company:"$company.title"
+        }
+     }},
+     {$limit:10}
+     //,{$count:"totalCount"}
+])
